@@ -1,5 +1,5 @@
 # Chatbot-using-IBM-Waston-Assistant
-In this report I created Arabic Chatbot using the IBM Waston Assistant and export skills as JSON file.
+In this repo I created Arabic Chatbot using the IBM Waston Assistant and export skills as JSON file.
  <br/>
  This is the final result for the Chatbot.
 
