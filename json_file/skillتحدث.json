@@ -1,0 +1,484 @@
+{
+  "intents": [
+    {
+      "intent": "WA_twitter",
+      "examples": [
+        {
+          "text": "أبغى موقع المطورة"
+        },
+        {
+          "text": "ابغى موقع وجدان الجدعاني"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "سلام",
+      "examples": [
+        {
+          "text": "سلام"
+        },
+        {
+          "text": "سلام عليكم"
+        },
+        {
+          "text": "السلام عليكم"
+        },
+        {
+          "text": "السلام عليكم ورحمة الله وبركاته"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "استهبال",
+      "examples": [
+        {
+          "text": ":)"
+        },
+        {
+          "text": "شكرا"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Control_panel_Q",
+      "examples": [
+        {
+          "text": "اش هذي الأزرار"
+        },
+        {
+          "text": "اش هذي الصفحة"
+        },
+        {
+          "text": "صفحة التحكم"
+        },
+        {
+          "text": "اش هذي الازرار"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "SM_website",
+      "examples": [
+        {
+          "text": "شركة"
+        },
+        {
+          "text": "ممم كيف أقدر أوصل لموقع الشركة?"
+        },
+        {
+          "text": "أبغى موقع الشركة"
+        },
+        {
+          "text": "أبغى رابط الموقع الخاص بالشركة"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "answer_q1_yes",
+      "examples": [
+        {
+          "text": "نعم"
+        },
+        {
+          "text": "ايوه"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "end_conv",
+      "examples": [
+        {
+          "text": "مع السلامة"
+        },
+        {
+          "text": "شكرا،مع السلامة"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "answer_q1_No",
+      "examples": [
+        {
+          "text": "لا"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "لا",
+      "output": {
+        "generic": []
+      },
+      "parent": "node_1_1598292452505",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_8_1598295481619"
+      },
+      "conditions": "#answer_q1_No",
+      "dialog_node": "node_2_1598293242250",
+      "previous_sibling": "node_3_1598292638209"
+    },
+    {
+      "type": "standard",
+      "title": "ايوه",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "طيب،تقدر تتحكم بالروبوت عن طريق لوحة التحكم بإستخدام الأزرار الموضحة قدامك بالصفحة\nإما بالتحريك لقدام بإستخدام الزر ^\nvأو بالتحريك لورا بإستخدام الزر \nأو لليمين بإستخدام الزر >\nأو لليسار بإستخدام الزر <\nأو إيقاف الروبوت بإستخدام الزر اللي بالنص :)"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_1_1598292452505",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_5_1598294077289"
+      },
+      "conditions": "#answer_q1_yes",
+      "dialog_node": "node_3_1598292638209"
+    },
+    {
+      "type": "standard",
+      "title": "تبغى تعرف أكثر عن الشركة المطورة للروبوت ومطورة صفحة الموقع والمساعد الشخصي؟",
+      "output": {
+        "generic": [
+          {
+            "title": "تبغى تعرف أكثر عن الشركة المطورة للروبوت ومطورة صفحة الموقع والمساعد الشخصي؟",
+            "options": [
+              {
+                "label": "ايوه",
+                "value": {
+                  "input": {
+                    "text": "ايوه"
+                  }
+                }
+              },
+              {
+                "label": "لا",
+                "value": {
+                  "input": {
+                    "text": "لا"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "node_3_1598292638209",
+      "conditions": "#answer_q1_No || #answer_q1_No",
+      "dialog_node": "node_5_1598294077289"
+    },
+    {
+      "type": "standard",
+      "title": "لا",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "طيب كيف أقدر أساعدك؟؟"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_5_1598294077289",
+      "conditions": "#answer_q1_No",
+      "dialog_node": "node_1_1598294496869",
+      "previous_sibling": "node_3_1598294188893"
+    },
+    {
+      "type": "standard",
+      "title": "ايوه",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "الشركة:شركة الأساليب الذكية \nمؤسسة تجارية وطنية مسجلة لدى وزارة التجارة و متخصصة في الدوائر والنظم الإلكترونية و التحكم الآلي وتعتبر المنشأة التجارية الأولى من نوعها في خدمة الباحثين والمبتكرين في العالم العربي.\nالمطورة:\nوجدان الجدعاني مهتمة بعلم البيانات والذكاء الاصطناعي ومُدربة بمجتمع WTM.\n"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_5_1598294077289",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_8_1598295481619"
+      },
+      "conditions": "#answer_q1_yes",
+      "dialog_node": "node_3_1598294188893"
+    },
+    {
+      "type": "standard",
+      "title": "أي شيء آخر",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "مافهمت،تقدر تعيد صياغة كلامك مره ثانية"
+              },
+              {
+                "text": "مافهمت قصدك"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "أي شيء آخر",
+      "previous_sibling": "node_1_1598292452505",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "title": "صفحة لوحة التحكم",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "هذي الصفحة خاصة بالتحكم بحركة الروبوت "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_1_1598292452505"
+      },
+      "conditions": "#Control_panel_Q",
+      "dialog_node": "node_5_1598296240370",
+      "previous_sibling": "node_8_1598295965848"
+    },
+    {
+      "type": "standard",
+      "title": "ممم طيب ذحين اش تحتاج ؟؟",
+      "output": {
+        "generic": [
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "ممم طيب ذحين اش تحتاج ؟؟"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#SM_website || #WA_twitter || #answer_q1_yes || #answer_q1_No",
+      "dialog_node": "node_8_1598295481619",
+      "previous_sibling": "node_2_1598295413668"
+    },
+    {
+      "type": "standard",
+      "title": "نهاية المحادثة",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "مع السلامة"
+              },
+              {
+                "text": "نشكر لك تواصلك مع الرد الالي :)"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#end_conv",
+      "dialog_node": "node_4_1598296692528",
+      "previous_sibling": "node_5_1598291639882"
+    },
+    {
+      "type": "standard",
+      "title": "تويتر وجدان الجدعاني",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "https://twitter.com/alwejdan17"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_8_1598295481619"
+      },
+      "conditions": "#WA_twitter",
+      "dialog_node": "node_8_1598295965848",
+      "previous_sibling": "node_2_1598296583509"
+    },
+    {
+      "type": "standard",
+      "title": "موقع الشركة",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "https://s-m.com.sa/index.html"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_8_1598295481619"
+      },
+      "conditions": "#SM_website",
+      "dialog_node": "node_2_1598295413668",
+      "previous_sibling": "node_5_1598296240370"
+    },
+    {
+      "type": "standard",
+      "title": "تبغى تعرف أكثر عن لوحة التحكم ؟؟",
+      "output": {
+        "generic": [
+          {
+            "title": "تبغى تعرف أكثر عن لوحة التحكم ؟؟",
+            "options": [
+              {
+                "label": "ايوه",
+                "value": {
+                  "input": {
+                    "text": "ايوه"
+                  }
+                }
+              },
+              {
+                "label": "لا",
+                "value": {
+                  "input": {
+                    "text": "لا"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "node_1_1598292452505",
+      "previous_sibling": "node_8_1598295481619"
+    },
+    {
+      "type": "standard",
+      "title": "استهبال",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "على الرحب والسعة"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#استهبال",
+      "dialog_node": "node_2_1598296583509",
+      "previous_sibling": "node_4_1598296692528"
+    },
+    {
+      "type": "standard",
+      "title": "الجملة الترحيبية",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "أهلاً وسهلاً معك المساعد الشخصي للوحة التحكم :) كيف ممكن أساعدك ؟"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "random"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "node_5_1598291639882"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "disambiguation": {
+      "prompt": ":هل قصدت",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "كل ما سبق خطأ"
+    },
+    "system_entities": {
+      "enabled": true
+    },
+    "human_agent_assist": {
+      "prompt": ":هل قصدت"
+    }
+  },
+  "learning_opt_out": false,
+  "name": "تحدث",
+  "language": "ar",
+  "description": ""
+}
